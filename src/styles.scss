@@ -1,0 +1,172 @@
+*,*::after,*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+body{
+    @include mobile {
+        width: 100%;
+        // overflow: hidden;
+    }
+}
+
+.App {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    @include mobile {
+        flex-direction: column;
+    }
+
+}
+.uploadImageMain{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    margin-left: calc(50% + 500px);
+    background: rgba(255, 255, 255, 0.888);
+    border: 2px solid rgb(216, 214, 214);
+    border-radius: 25px;
+    position: absolute;
+    @include mobile {
+        width: 80%;
+        margin-left: -50px;
+        margin-top: 100px;
+    }
+    .uploadImageForm{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        
+        .uploadImageInput {
+            display: none;
+        }
+        label{
+            width: 90%;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(150, 150, 150);
+            &:hover {
+                color: blue;
+            }
+        }
+        .uploadImageButtons {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+    }    
+}
+
+.listImage {
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login, .register {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    .loginForm, .registerForm{
+        width: 400px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.418);
+        padding: 50px;
+
+        .input {
+            margin-top: 30px;
+        }
+        .button {
+            text-transform: none;
+            color: rgb(150, 132, 132);
+            margin-top: 30px;
+        }
+        .signWithGoogle{
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.625);
+            width: 80%;
+            text-transform: none;
+        }
+        
+    }
+    .registerForm {
+        height: 600px;
+        .registerError {
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            left: -50px;
+            color: red;
+        }
+    }
+}
+
+.sidebar {
+    width:200px;
+    padding:20px;
+    border-right: 3px solid #f2f2f2;
+    height:100vh;
+    position:sticky;
+    top:0;
+    display:block;
+
+    .progressListInSidebar {
+        @include mobile {
+            margin-top: 120px;
+            width: 100%;
+            height: 100px;
+        }
+    }
+    @include mobile {
+        width: 100%;
+        height: 120px;
+        display: flex;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 3px solid #f2f2f2;
+        border-radius: 15px;
+    }
+}
+
+.sidebarInApp{
+    width:200px;
+    z-index:100;
+    @include mobile {
+        width: 100%;
+    }
+}
+
+.uploadContainer {
+    margin-bottom: 50px;
+    .uploadButton{
+        @include mobile {
+            position: absolute;
+            right: 15px;
+            top: 5px;
+            width: 220px;
+            height: 50px;
+            font-size: 16px;
+        }
+    }
+}
